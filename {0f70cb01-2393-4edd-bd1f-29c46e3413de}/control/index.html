@@ -10,11 +10,15 @@
         <video id="video" width="320" height="240" preload="none" autoplay muted>
             <source id="source" src="https://192.168.0.90/axis-cgi/media.cgi" type="video/mp4">
             Your browser does not support the video tag.
-        </video>
-
         <script>
 
             var wincc = false; //flag presenza runtime
+            var video = document.getElementById('video');
+            var source = document.getElementById('source');
+
+            window.onfocus = function() {
+                video.load();
+            };
 
             //Callback nuovi parametri da WinCC
             function dataFromWinCC(data){
@@ -24,9 +28,20 @@
                 console.log(data);
 				switch (data.key) {
 					case "CameraStreamUrl":
-                            document.getElementById('video').innerHTML = '<source src="' + data.value + '" type="video/mp4">';
+                        video.removeChild(document.getElementById('source'));
+                        let newSource = document.createElement('source');
+                        newSource.setAttribute('id', "source");
+                        newSource.setAttribute('src', data.value);
+                        video.appendChild(newSource);
 						break;
+                    case "Width":
+                        video.setAttribute("width", data.value);
+                        break;
+                    case "Height":
+                        video.setAttribute("height", data.value);
+                        break;
 				}
+                video.load();
 			}
 
             //connessione con WinCC
@@ -36,6 +51,10 @@
                         console.log("Connessione con WinCC avvenuta con successo");
                         try {
                             wincc = true; //attiva flag presenza runtime
+                            video.setAttribute("width", WebCC.Properties.Width);
+                            video.setAttribute("height", WebCC.Properties.Height);
+                            source.setAttribute('src', WebCC.Properties.CameraStreamUrl);
+                            video.load();
                             WebCC.onPropertyChanged.subscribe(dataFromWinCC); //registrazione callback chiamata quando arrivano nuovi dati da WinCC
                         } 
                         catch (error) {
@@ -51,6 +70,8 @@
                     events: [],
                     properties: {
                         CameraStreamUrl: "https://192.168.0.90/axis-cgi/media.cgi",
+                        Width: 320,
+                        Height: 240
                     }
                 },
                 ["HMI"],

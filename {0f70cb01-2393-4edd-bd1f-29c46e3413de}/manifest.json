@@ -29,7 +29,7 @@
                         "type": "number",
                         "default": 320
                     },
-                    "Heigth":{
+                    "Height":{
                         "type": "number",
                         "default": 240
                     },                   
