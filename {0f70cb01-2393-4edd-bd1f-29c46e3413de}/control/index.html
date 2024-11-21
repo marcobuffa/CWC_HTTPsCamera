@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Base CWC 4 training</title>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="libs/webcc.min.js"></script>
+    </head>
+    <body>
+        <video id="video" width="320" height="240" preload="none" autoplay muted>
+            <source id="source" src="https://192.168.0.90/axis-cgi/media.cgi" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <script>
+
+            var wincc = false; //flag presenza runtime
+
+            //Callback nuovi parametri da WinCC
+            function dataFromWinCC(data){
+                //data.value --> nuovo valore
+                //data.key --> nome del parametro aggiornato
+                console.log("Nuovo parametro ricevuto da WinCC:");
+                console.log(data);
+				switch (data.key) {
+					case "CameraStreamUrl":
+                            document.getElementById('video').innerHTML = '<source src="' + data.value + '" type="video/mp4">';
+						break;
+				}
+			}
+
+            //connessione con WinCC
+            WebCC.start(
+                function(result) {
+                    if (result) { //c'è un'istanza di WinCC in esecuzione
+                        console.log("Connessione con WinCC avvenuta con successo");
+                        try {
+                            wincc = true; //attiva flag presenza runtime
+                            WebCC.onPropertyChanged.subscribe(dataFromWinCC); //registrazione callback chiamata quando arrivano nuovi dati da WinCC
+                        } 
+                        catch (error) {
+                            console.log(error);
+                        }
+                    } else {
+                        console.log("Connessione con WinCC non riuscita (sono in un browser?)");
+                    }
+                },
+                {
+                    //dichiarazione di metodi, eventi e parametri (deve coincidere con il manifest!)
+                    methods: {},
+                    events: [],
+                    properties: {
+                        CameraStreamUrl: "https://192.168.0.90/axis-cgi/media.cgi",
+                    }
+                },
+                ["HMI"],
+                10000
+            );
+        </script>
+    </body>
+</html>
