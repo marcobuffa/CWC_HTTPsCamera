@@ -26,11 +26,11 @@
                 "events": {},
                 "properties": {
                     "Width":{
-                        "type": "integer",
+                        "type": "number",
                         "default": 320
                     },
                     "Heigth":{
-                        "type": "integer",
+                        "type": "number",
                         "default": 240
                     },                   
                     "CameraStreamUrl":{
