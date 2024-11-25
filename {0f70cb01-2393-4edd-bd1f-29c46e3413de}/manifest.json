@@ -2,10 +2,10 @@
     "mver": "1.2.0",
     "control": {
         "identity": {
-            "name": "Axis",
+            "name": "HTTPsCamera",
             "version": "1.0",
-            "displayname": "Axis CWC video stream",
-            "icon": "./assets/axis.png",
+            "displayname": "HTTPs Camera CWC",
+            "icon": "./assets/camera.png",
             "type": "guid://0f70cb01-2393-4edd-bd1f-29c46e3413de",
             "start": "./control/index.html"
         },
