@@ -18,14 +18,14 @@ Icon created by [Freepik - Flaticon](https://www.flaticon.com/free-icons/camera"
 - [x] Write a meaningful documentation
 - [ ] Get feedbacks from customers/colleagues
 
-## Hot to use this CWC:
+## How to use this CWC (use this if you are in a hurry):
 
 1. Download the [{0f70cb01-2393-4edd-bd1f-29c46e3413de}.zip](build/{0f70cb01-2393-4edd-bd1f-29c46e3413de}.zip) file
 2. Copy the **{0f70cb01-2393-4edd-bd1f-29c46e3413de}.zip** file in **C:\Program Files\Siemens\Automation\Portal V1x\Data\Hmi\CustomControls** folder
 3. Refresh the **My Controls** right side pane in the TIA Portal WinCC Unified screen editor
 4. Enjoy
 
-## How to create a CWC from this stuff:
+## How to create a CWC from this stuff (use this if you want to go deeper and/or make some modifications):
 
 1. Download/pull/whatever the code
 2. cd in the **{0f70cb01-2393-4edd-bd1f-29c46e3413de}** folder
