@@ -53,8 +53,10 @@ To avoid User/Password request, if possible, allow anonymous access on your came
 
 ![Camera parameters](documentation/CameraSettings1.png)
 
-### I want more information on CWCs!
+## I want...
+
+### ... more information on CWCs!
 [Here](https://github.com/marcobuffa/CWC_Base) you can find a very basic CWC with some documentation more in order to understand how does this work.
 
-### I want to report a bug, suggest a feature, offer a coffee
+### ... to report a bug, to suggest a new feature, to offer a coffee ;-)
 Just write to [marco.buffa@siemens.com](mailto:marco.buffa@siemens.com)
