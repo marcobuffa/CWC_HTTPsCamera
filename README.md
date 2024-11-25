@@ -1,6 +1,6 @@
 # CWC_HTTPsCamera
 
-## A very basic Custom Web Control (CWC) to to show an HTTPS video stream in WinCC Unified
+## A very basic Custom Web Control (CWC) to show an HTTPS video stream in WinCC Unified
 
 ![A security camera]({0f70cb01-2393-4edd-bd1f-29c46e3413de}/assets/camera.png)
 
